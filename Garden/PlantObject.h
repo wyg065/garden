@@ -10,4 +10,6 @@
 
 @interface PlantObject : NSObject
 
+@property NSString* name;
+
 @end

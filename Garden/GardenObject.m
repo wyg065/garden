@@ -9,19 +9,57 @@
 #import "GardenObject.h"
 
 @implementation GardenObject
+@synthesize width;
+@synthesize height;
 
-- (void)setWidth:w(NSInteger) {
-    self.width = w;
+-(void)setWidth:(NSInteger) w {
+    width = w;
 }
 
-- (void)setHeight:h(NSInteger) {
-    self.height = h;
+-(NSInteger)getWidth {
+    return width ;
 }
 
--(void)allocateTable:w(NSInteger):w(NSInteger) {
-    setHeight(h);
-    setWidth(w);
-    self.table = new table[w][h];
+- (void)setHeight:(NSInteger ) h {
+    height = h;
 }
+
+- (NSInteger)getHeight {
+    return height;
+}
+
+//-(void)  allocateTable:(NSInteger)h withWidth:(NSInteger) w
+-(void)  allocateTable:(NSInteger)h withWidth:(NSInteger) w {
+    NSLog([@(h) stringValue]);
+    
+    
+    [self setHeight: h];
+    
+    [self setWidth: w];
+    
+    
+    NSLog([@(height) stringValue]);
+    
+    //creates a dummy planty
+    PlantObject *myPlant = [PlantObject new];
+    myPlant.name = @"carrot";
+    
+    PlantObject *myPlant2 = [PlantObject new];
+    myPlant.name = @"carrot2";
+    
+    self.gardenArr2d = [NSMutableArray new];
+    for (int i = 0; i < h*w; i++) {
+        if (i > 5) {
+            [self.gardenArr2d addObject:myPlant];
+        } else {
+            [self.gardenArr2d addObject:myPlant2];
+        }
+    }
+    
+    //print dummy plant
+    PlantObject *myPlanty = self.gardenArr2d[0];
+    NSLog(myPlanty.name);
+}
+
 
 @end
